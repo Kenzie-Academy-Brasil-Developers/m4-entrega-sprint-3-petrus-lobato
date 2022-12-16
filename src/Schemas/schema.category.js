@@ -10,7 +10,7 @@
     //     createdAt: yup.string().default(() => new Date().toISOString()).transform(() => new Date().toISOString()),
     // })
     
-    import * as yup from 'yup';
+import * as yup from 'yup';
     
     
 const createCategorySchema = yup.object().shape({
@@ -22,10 +22,14 @@ const returnCategorySchema = yup.object().shape({
     name: yup.string()
 });
 
+const returnCategoryIdSchema = yup.object().shape({
+    id: yup.number(),
+});
+
 
 const listCategorySchema = yup.array(returnCategorySchema); 
 // validação de varios obj(array) com validação do yup passado. 
 
 
 
-export {createCategorySchema, returnCategorySchema, listCategorySchema};
+export {createCategorySchema, returnCategorySchema, listCategorySchema, returnCategoryIdSchema};

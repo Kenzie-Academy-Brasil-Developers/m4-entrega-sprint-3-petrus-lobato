@@ -3,8 +3,8 @@ const validatedMiddleware = (schema) => async (req, res, next) => {
 
     try{
         const validated = await schema.validate(req.body, {
-            abortEarly: false,
-            stripUnknown: true
+            abortEarly: false, // Retorna todos os erros que encontrar
+            stripUnknown: true // Retorna apenas as keys que é passado no yup
     })
 
         
@@ -12,7 +12,7 @@ const validatedMiddleware = (schema) => async (req, res, next) => {
 
         next();
     }
-    catch(error){
+    catch(error){ 
         return res.status(400).json({
             message:error.message
         })

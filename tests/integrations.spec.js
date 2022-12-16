@@ -55,7 +55,7 @@ describe("Testes rota /categories", () => {
 describe("Testes rota /products", () => {
   it("Testando criacao de produto", async () => {
     const response = await request(app).post("/products").send(testProduct);
-
+   
     testProduct.id = response.body.id;
 
     expect(response.status).toBe(201);
@@ -84,7 +84,7 @@ describe("Testes rota /products", () => {
       .send({
         name: `${testProduct.name} Atualizado`,
       });
-
+     
     expect(response.status).toBe(200);
     expect(response.body.name).toContain("Atualizado");
   });
@@ -170,7 +170,7 @@ describe("Testando casos de erro nas rotas /categories e /products", () => {
 
   it("Nao permite listar uma categoria inexistente", async () => {
     const response = await request(app).get("/categories/id_test");
-
+     console.log("------------------",response.body)
     expect(response.status).toBe(404);
     expect(response.body.message).toBeDefined();
   });

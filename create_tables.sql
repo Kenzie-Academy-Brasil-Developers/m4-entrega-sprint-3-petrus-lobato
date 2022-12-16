@@ -9,6 +9,6 @@ CREATE TABLE products(
 	id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
 	name VARCHAR(200) NOT NULL,
 	price DECIMAL(8,2) NOT NULL,
-	id_category INTEGER REFERENCES categories(id) ON DELETE CASCADE 
+	category_id INTEGER REFERENCES categories(id) ON DELETE SET NULL
 );
 
