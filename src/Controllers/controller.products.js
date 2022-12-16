@@ -2,56 +2,55 @@ import { createProductsService, searchProductsService, searchesProductsService, 
 
 
 
-export const createProductsController = ( req, res) =>{
+export const createProductsController = async ( req, res) =>{
 
-    const [ status, response] = createProductsService();
+    const response = await createProductsService(req.validatedBody);
   
-  
-    return res.status(status).json(response);
+    return res.status(201).json(response);
 };
 
 
-export const searchesProductsController = ( req, res) =>{
+export const searchesProductsController =  async ( req, res) =>{
 
-    const [ status, response] = searchesProductsService();
+    const  response = await searchesProductsService();
   
-  
-    return res.status(status).json(response);
+    return res.status(200).json(response);
 };
 
 
 
-export const searchProductsController = ( req, res) =>{
+export const searchProductsController = async ( req, res) =>{
 
-    const [ status, response] = searchProductsService();
+    const response = await searchProductsService(req.params.id);
+
+    console.log(response)
   
   
-    return res.status(status).json(response);
+    return res.status(200).json(response);
 };
 
 
-export const updateProductsController = ( req, res) =>{
+export const updateProductsController = async ( req, res) =>{
 
-    const [ status, response] = updateProductsService();
+    const  response = await updateProductsService(req.validatedBody, req.params.id );
   
   
-    return res.status(status).json(response);
+    return res.status(200).json(response);
 };
 
 
-export const deleteProductsController = ( req, res) =>{
+export const deleteProductsController = async ( req, res) =>{
 
-    const [ status, response] = deleteProductsService();
+    const  response = await deleteProductsService(req.params.id);
   
   
-    return res.status(status).json(response);
+    return res.status(204).json(response);
 };
 
 
-export const filterProductsController = ( req, res) =>{
+export const filterProductsController = async ( req, res) =>{
 
-    const [ status, response] = filterProductsService();
+    const response = await filterProductsService(req.params.id_category);
   
-  
-    return res.status(status).json(response);
+    return res.status(200).json(response);
 };
