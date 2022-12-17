@@ -16,16 +16,20 @@ export const deleteCategoryService =  async (id) =>{
         [id]
     )
 
-    if(!verifId.rowCount > 0){
 
-        throw new AppError('Category not existis', 409)
+
+    if(verifId.rowCount <= 0){
+
+          throw new Error('Category not existis')
     }
 
     const deleteId = await database.query(
 
         `DELETE FROM categories WHERE id = $1 RETURNING *;`, [id]
-    )
+        )
 
-    return {}
+        return {}
 
+
+  
 };

@@ -16,9 +16,9 @@ export const searchCategoryService = async (id) =>{
         [id]
     )
 
-    if(!verifId.rowCount > 0){
+    if(verifId.rowCount == 0){
 
-        throw new AppError('Category not existis', 409)
+        throw new AppError('Category not existis')
     }
 
     const responseUser = await returnCategorySchema.validate(verifId.rows[0]);

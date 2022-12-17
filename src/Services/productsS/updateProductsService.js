@@ -1,5 +1,4 @@
 import { database } from "../../database";
-import { AppError } from "../../Errors/errors";
 import { returnProductSchema} from "../../Schemas/schema.products";
 
 
@@ -8,8 +7,7 @@ import { returnProductSchema} from "../../Schemas/schema.products";
 
 export const updateProductsService = async (newDate, id) =>{
  
-
-
+    
     const verifId = await database.query(
         `SELECT
             *
@@ -19,10 +17,10 @@ export const updateProductsService = async (newDate, id) =>{
             id = $1;`,
         [id]
     )
-
-    if(verifId.rowCount === 0){
-
-        throw new AppError('Products not existis', 409)
+      
+    if(verifId.rowCount == 0){
+     
+        throw new Error('Products not existis')
     }
 
     let query = `UPDATE products set`

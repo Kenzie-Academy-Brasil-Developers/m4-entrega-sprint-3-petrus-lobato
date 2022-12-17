@@ -6,23 +6,18 @@ import { searchProductsController} from '../Controllers/products/searchProductsC
 import { searchesProductsController } from '../Controllers/products/searchesProductsController';
 import { updateProductsController } from '../Controllers/products/updateProductsController';
 
-import validatedMiddleware from '../Middleware/validated.middleware';
-import { createProductSchema, returuptadeProducttSchema } from '../Schemas/schema.products';
-import productsdMiddlewareId from '../Middleware/productsMiddlewareId';
-
-
 
 const productsRoute = Router();
 
-productsRoute.post('',validatedMiddleware(createProductSchema),  createProductsController);
+productsRoute.post('', createProductsController);
 
 productsRoute.get('', searchesProductsController);
 
-productsRoute.get('/:id', productsdMiddlewareId, searchProductsController);
+productsRoute.get('/:id', searchProductsController);
 
-productsRoute.patch('/:id', productsdMiddlewareId, validatedMiddleware(returuptadeProducttSchema), updateProductsController);
+productsRoute.patch('/:id', updateProductsController);
 
-productsRoute.delete('/:id', productsdMiddlewareId, deleteProductsController);
+productsRoute.delete('/:id', deleteProductsController);
 
 productsRoute.get('/category/:category_id', filterProductsController);
 

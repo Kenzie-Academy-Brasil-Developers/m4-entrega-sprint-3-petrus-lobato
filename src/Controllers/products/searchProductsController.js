@@ -5,8 +5,13 @@ import { searchProductsService } from "../../Services/productsS/searchProductsSe
 
 export const searchProductsController = async ( req, res) =>{
 
-    const response = await searchProductsService(req.id);
+    try {
+        const response = await searchProductsService(req.params.id);
 
-
-    return res.status(200).json(response);
+        return res.status(200).json(response);
+        
+    } catch (error) {
+        return res.status(404).json({message: error.message});
+    }
+    
 };

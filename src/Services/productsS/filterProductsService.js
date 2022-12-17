@@ -3,8 +3,6 @@ import { AppError } from "../../Errors/errors";
 
 
 
-
-
 export const filterProductsService = async (idCategory) =>{
 
     const verifId = await database.query(
@@ -21,7 +19,7 @@ export const filterProductsService = async (idCategory) =>{
 
     if(verifId.rowCount === 0){
 
-        throw new AppError('Category not existis', 404)
+        throw new Error('Category not existis')
     }
 
     const verifProduct = await database.query(

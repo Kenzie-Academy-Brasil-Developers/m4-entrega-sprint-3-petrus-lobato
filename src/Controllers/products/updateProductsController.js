@@ -5,8 +5,12 @@ import { updateProductsService } from "../../Services/productsS/updateProductsSe
 
 export const updateProductsController = async ( req, res) =>{
 
-    const  response = await updateProductsService(req.validatedBody, req.id );
+    try {
+        const  response = await updateProductsService(req.body, req.params.id );
   
-  
-    return res.status(200).json(response);
+        return res.status(200).json(response);
+    } catch (error) {
+        return res.status(404).json({message: error.message});
+    }
+    
 };

@@ -19,7 +19,7 @@ export const updateCategoryService = async (newDate, id ) =>{
 
     if(!verifId.rowCount > 0){
 
-        throw new AppError('Category not existis', 409)
+        throw new AppError('Category not existis')
     }
 
     const updateId = await database.query(

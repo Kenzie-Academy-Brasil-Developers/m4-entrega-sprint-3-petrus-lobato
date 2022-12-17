@@ -4,9 +4,16 @@ import { createCategoryService } from "../../Services/categoryS/createCategorySe
 
 
 export const createCategoryController = async ( req, res ) =>{
-   
-    const response = await createCategoryService(req.validatedBody);
+
+    try {
+
+         const response = await createCategoryService(req.validatedBody);
   
-    return res.status(201).json(response);
+        return res.status(201).json(response);
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+        
+    }
+   
 };
 

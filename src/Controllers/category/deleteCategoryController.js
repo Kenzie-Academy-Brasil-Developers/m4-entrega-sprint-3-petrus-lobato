@@ -5,8 +5,16 @@ import { deleteCategoryService } from "../../Services/categoryS/deleteCategorySe
 
 export const deleteCategoryController = async ( req, res ) =>{
 
-    const response = await deleteCategoryService(req.id);
+    try {
+
+        const response = await deleteCategoryService(req.params.id);
   
   
-    return res.status(204).json(response);
+        return res.status(204).json(response);
+
+    } catch (error) {
+        return res.status(404).json({message: error.message})
+    }
+
+    
 };

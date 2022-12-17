@@ -1,9 +1,6 @@
 import { database } from "../../database";
-import { AppError } from "../../Errors/errors";
+
 import { returnProductSchema} from "../../Schemas/schema.products";
-
-
-
 
 
 
@@ -21,7 +18,7 @@ export const searchProductsService = async (id) =>{
 
     if(!verifId.rowCount > 0){
 
-        throw new AppError('Products not existis', 409)
+        throw new Error('Products not existis')
     }
 
    

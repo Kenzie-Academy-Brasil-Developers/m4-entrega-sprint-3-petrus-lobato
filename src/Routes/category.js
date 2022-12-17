@@ -19,7 +19,7 @@ categoryRoute.get('/:id', validatedMiddlewareId, searchCategoryController);
 
 categoryRoute.patch('/:id', validatedMiddlewareId, validatedMiddleware(createCategorySchema), updateCategoryController);
 
-categoryRoute.delete('/:id', validatedMiddlewareId, deleteCategoryController);
+categoryRoute.delete('/:id', deleteCategoryController);
 
 
 

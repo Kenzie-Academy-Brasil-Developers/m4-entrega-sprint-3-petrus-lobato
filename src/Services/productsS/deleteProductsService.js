@@ -17,7 +17,7 @@ export const deleteProductsService = async (id) =>{
 
     if(!verifId.rowCount > 0){
 
-        throw new AppError('Products not existis', 409)
+        throw new Error('Products not existis')
     }
 
     const deleteId = await database.query(

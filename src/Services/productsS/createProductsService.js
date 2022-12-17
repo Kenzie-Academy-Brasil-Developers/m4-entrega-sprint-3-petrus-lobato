@@ -1,10 +1,12 @@
 import { database } from "../../database";
-import { AppError } from "../../Errors/errors";
-import { returnProductSchema} from "../../Schemas/schema.products";
+import { createProductSchema } from "../../Schemas/schema.products";
 
 
 export const createProductsService = async (date) =>{
 
+    const shemaDate = await createProductSchema.validate(date)
+
+   
    
     const verifUnique = await database.query(
         `SELECT
@@ -13,21 +15,21 @@ export const createProductsService = async (date) =>{
             products
         WHERE
             name = $1;`,
-        [date.name]
+        [shemaDate.name]
     )
 
     
     if(verifUnique.rowCount > 0){
-   
-      throw new AppError('User already exists!', 400)
+
+       throw new Error('Products alredy existi')
     }
+
  
     const response = await database.query(
         'INSERT INTO products (name, price, category_id ) VALUES ($1, $2, $3) RETURNING *;',
-        [date.name, date.price, date.category_id]
+        [shemaDate.name, shemaDate.price, shemaDate.category_id]
     )
 
-    const responseUser = await returnProductSchema.validate(response.rows[0])
 
-    return  responseUser;
+    return  response.rows[0]
 };

@@ -17,7 +17,7 @@ export const createCategoryService = async (date) =>{
     
     if(verifUnique.rowCount > 0){
 
-      throw new AppError('User already exists!', 409)
+      throw new AppError('User already exists!')
     }
 
     const response = await database.query(
