@@ -4,17 +4,17 @@ import 'dotenv/config'
 const database = new Client(
   process.env.NODE_ENV === "test"
     ? {
-        user: process.env.PGUSER,
+        user: process.env.DB_USER,
         host: 'localhost',
-        database: 'tests',
-        password: process.env.PGPASSWORD,
+        database: 'tests_products',
+        password: process.env.DB_PASSWORD,
         port: 5432
       }
     : {
-        user: process.env.PGUSER,
+        user: process.env.DB_USER,
         host: 'localhost',
-        database: process.env.PGDATABASE,
-        password: process.env.PGPASSWORD,
+        database: process.env.DB_DATABASE,
+        password: process.env.DB_DB_PASSWORD,
         port: 5432
       }
 );
