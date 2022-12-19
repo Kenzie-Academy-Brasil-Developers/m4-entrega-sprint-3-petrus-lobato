@@ -6,7 +6,7 @@
   "author": "FelipeSilva",
   "scripts": {
     "start": "nodemon",
-    "actions": "cross-env NODE_ENV=test PGUSER=kenzie PGPASSWORD=kenzie jest --forceExit",
+    "actions": "cross-env NODE_ENV=test DB_USER=kenzie DB_PASSWORD=kenzie jest --forceExit",
     "test": "cross-env NODE_ENV=test jest --verbose --forceExit"
   },
   "dependencies": {
