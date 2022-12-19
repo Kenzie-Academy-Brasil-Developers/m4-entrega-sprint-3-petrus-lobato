@@ -1,6 +1,4 @@
 import { database } from "../../database";
-import { AppError } from "../../Errors/errors";
-
 
 
 export const deleteProductsService = async (id) =>{
@@ -15,7 +13,7 @@ export const deleteProductsService = async (id) =>{
         [id]
     )
 
-    if(!verifId.rowCount > 0){
+    if(verifId.rowCount <= 0){
 
         throw new Error('Products not existis')
     }
@@ -26,4 +24,5 @@ export const deleteProductsService = async (id) =>{
     )
 
     return {}
+
 };

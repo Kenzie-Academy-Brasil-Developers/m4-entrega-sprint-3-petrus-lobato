@@ -1,3 +1,4 @@
+import { AppError } from "../../Errors/errors";
 import { deleteCategoryService } from "../../Services/categoryS/deleteCategoryService";
 
 
@@ -13,7 +14,8 @@ export const deleteCategoryController = async ( req, res ) =>{
         return res.status(204).json(response);
 
     } catch (error) {
-        return res.status(404).json({message: error.message})
+        throw new AppError(error.message, 404);
+   
     }
 
     

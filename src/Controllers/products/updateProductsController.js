@@ -1,7 +1,5 @@
+import { AppError } from "../../Errors/errors";
 import { updateProductsService } from "../../Services/productsS/updateProductsService";
-
-
-
 
 export const updateProductsController = async ( req, res) =>{
 
@@ -10,7 +8,9 @@ export const updateProductsController = async ( req, res) =>{
   
         return res.status(200).json(response);
     } catch (error) {
-        return res.status(404).json({message: error.message});
+        
+        throw new AppError(error.message, 404);
+       
     }
     
 };
