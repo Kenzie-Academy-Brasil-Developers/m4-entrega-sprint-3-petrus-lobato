@@ -24,7 +24,7 @@ export const createProductsService = async (date) =>{
 
  
     const response = await database.query(
-        'INSERT INTO products (name, price, id_category ) VALUES ($1, $2, $3) RETURNING *;',
+        'INSERT INTO products (name, price, category_id ) VALUES ($1, $2, $3) RETURNING *;',
         [shemaDate.name, shemaDate.price, shemaDate.category_id]
     )
 

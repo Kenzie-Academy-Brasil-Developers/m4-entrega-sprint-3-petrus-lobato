@@ -18,7 +18,7 @@ export const filterProductsService = async (idCategory) =>{
  
 
     if(!verifId.rowCount > 0){
-        console.log('-------------Entrou')
+
         throw new Error('Category not existis')
     }
 
