@@ -1,5 +1,5 @@
 import { database } from "../../database";
-import { returnProductSchema} from "../../Schemas/schema.products";
+import { returuptadeProducttSchema} from "../../Schemas/schema.products";
 
 
 
@@ -7,7 +7,6 @@ import { returnProductSchema} from "../../Schemas/schema.products";
 
 export const updateProductsService = async (newDate, id) =>{
  
-    
     const verifId = await database.query(
         `SELECT
             *
@@ -18,6 +17,8 @@ export const updateProductsService = async (newDate, id) =>{
         [id]
     )
       
+   
+
     if(verifId.rowCount == 0){
      
         throw new Error('Products not existis')
@@ -41,7 +42,7 @@ export const updateProductsService = async (newDate, id) =>{
         [...values, id]
     )
 
-    const responseUser = await returnProductSchema.validate(queryResponse.rows[0])
+    const responseUser = await returuptadeProducttSchema.validate(queryResponse.rows[0])
 
     return responseUser;
 };

@@ -16,8 +16,8 @@ export const searchCategoryService = async (id) =>{
         [id]
     )
 
-    if(verifId.rowCount == 0){
-
+    if(!verifId.rowCount > 0){
+       
         throw new AppError('Category not existis')
     }
 

@@ -9,16 +9,16 @@ export const filterProductsService = async (idCategory) =>{
         `SELECT
             *
         FROM
-            categories
+            products
         WHERE
-            id = $1;`,
+        category_id = $1;`,
         [idCategory]
     )
 
-    
+ 
 
-    if(verifId.rowCount === 0){
-
+    if(!verifId.rowCount > 0){
+        console.log('-------------Entrou')
         throw new Error('Category not existis')
     }
 
@@ -36,6 +36,8 @@ export const filterProductsService = async (idCategory) =>{
         [idCategory]
         
     )
+
+   
 
     
     if(!verifProduct.rowCount > 0){

@@ -12,7 +12,7 @@ const returuptadeProducttSchema = yup.object().shape({
     id: yup.string(),
     name: yup.string().notRequired(),
     price: yup.number(),
-    category_id:yup.string()
+    id_category:yup.string()
 });
 
 
